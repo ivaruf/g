@@ -1,7 +1,8 @@
 #!/bin/bash
 
 function lookup() {
-	git reflog | grep 'moving from' | sed 's .*\(from.*\) \1 ' | sed 's/from //' | sed 's/ to / /' | tr ' ' '\n' | awk '!x[$0]++' | head -$1
+	git reflog | grep 'moving from' | sed 's .*\(moving.from.*\) \1 ' | sed 's/^.*to //' | tr ' ' '\n' | awk '!x[$0]++' | head -$1
+
 }
 
 function checkout() {
